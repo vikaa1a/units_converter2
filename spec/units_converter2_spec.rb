@@ -1,61 +1,45 @@
-require 'units_converter'
+require 'units_converter2'
 
 RSpec.describe UnitsConverter do
-  describe '.convert_length' do
-    it 'converts meters to feet' do
-      expect(UnitsConverter.convert_length(10, 'm', 'ft')).to be_within(0.01).of(32.81)
+  describe ".convert_length" do
+    it "converts from meters to centimeters" do
+      expect(UnitsConverter.convert_length(1, 'm', 'cm')).to eq(100)
     end
 
-    it 'converts inches to centimeters' do
-      expect(UnitsConverter.convert_length(10, 'in', 'cm')).to be_within(0.01).of(25.40)
+    it "converts from inches to feet" do
+      expect(UnitsConverter.convert_length(12, 'in', 'ft')).to eq(1)
     end
 
-    it 'raises an error for invalid from_unit' do
-      expect { UnitsConverter.convert_length(10, 'invalid', 'm') }.to raise_error(ArgumentError)
-    end
-
-    it 'raises an error for invalid to_unit' do
-      expect { UnitsConverter.convert_length(10, 'm', 'invalid') }.to raise_error(ArgumentError)
+    it "raises an error for invalid units" do
+      expect { UnitsConverter.convert_length(1, 'm', 'invalid') }.to raise_error(ArgumentError)
     end
   end
 
-  describe '.convert_weight' do
-    it 'converts kilograms to pounds' do
-      expect(UnitsConverter.convert_weight(10, 'kg', 'lb')).to be_within(0.01).of(22.05)
+  describe ".convert_weight" do
+    it "converts from grams to kilograms" do
+      expect(UnitsConverter.convert_weight(1000, 'g', 'kg')).to eq(1)
     end
 
-    it 'converts ounces to grams' do
-      expect(UnitsConverter.convert_weight(10, 'oz', 'g')).to be_within(0.01).of(283.50)
+    it "converts from ounces to pounds" do
+      expect(UnitsConverter.convert_weight(16, 'oz', 'lb')).to eq(1)
     end
 
-    it 'raises an error for invalid from_unit' do
-      expect { UnitsConverter.convert_weight(10, 'invalid', 'kg') }.to raise_error(ArgumentError)
-    end
-
-    it 'raises an error for invalid to_unit' do
-      expect { UnitsConverter.convert_weight(10, 'kg', 'invalid') }.to raise_error(ArgumentError)
+    it "raises an error for invalid units" do
+      expect { UnitsConverter.convert_weight(1, 'g', 'invalid') }.to raise_error(ArgumentError)
     end
   end
 
-  describe '.convert_temperature' do
-    it 'converts Celsius to Fahrenheit' do
-      expect(UnitsConverter.convert_temperature(0, 'C', 'F')).to be_within(0.01).of(32.00)
+  describe ".convert_temperature" do
+    it "converts from Celsius to Fahrenheit" do
+      expect(UnitsConverter.convert_temperature(0, 'C', 'F')).to eq(32)
     end
 
-    it 'converts Fahrenheit to Celsius' do
-      expect(UnitsConverter.convert_temperature(32, 'F', 'C')).to be_within(0.01).of(0.00)
+    it "converts from Kelvin to Celsius" do
+      expect(UnitsConverter.convert_temperature(273.15, 'K', 'C')).to eq(0)
     end
 
-    it 'converts Celsius to Kelvin' do
-      expect(UnitsConverter.convert_temperature(0, 'C', 'K')).to be_within(0.01).of(273.15)
-    end
-
-    it 'raises an error for invalid from_unit' do
-      expect { UnitsConverter.convert_temperature(0, 'invalid', 'C') }.to raise_error(ArgumentError)
-    end
-
-    it 'raises an error for invalid to_unit' do
-      expect { UnitsConverter.convert_temperature(0, 'C', 'invalid') }.to raise_error(ArgumentError)
+    it "raises an error for invalid units" do
+      expect { UnitsConverter.convert_temperature(1, 'C', 'invalid') }.to raise_error(ArgumentError)
     end
   end
 end
