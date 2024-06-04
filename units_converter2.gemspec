@@ -5,12 +5,12 @@ require_relative "lib/units_converter2/version"
 Gem::Specification.new do |spec|
   spec.name = "units_converter2"
   spec.version = UnitsConverter2::VERSION
-  spec.authors = ["vikaa1a"]
-  spec.email = ["114860679+vikaa1a@users.noreply.github.com"]
+  spec.authors = ["Petrosova Viktoria"]
+  spec.email = ["vpetrosova@sfedu.ru"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Сonversion of values"
+  spec.description = "A gem with which you can change values"
+  spec.homepage = "https://github.com/vikaa1a/units_converter2"
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
